@@ -1,0 +1,52 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Excel Starter</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-Fabric">
+    <header class="app-header ms-bgColor-neutralLighter">
+        <img width="40" height="40" src="../../assets/logo-filled.png" alt="" />
+        <h1 class="ms-font-xl">Time log</h1>
+    </header>
+
+    <section id="sideload-msg" class="app-main">
+        <p class="ms-font-l">Please <a target="_blank" href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing">sideload</a> this add-in in Excel to use it.</p>
+    </section>
+
+    <main id="app-body" class="app-main" style="display: none;">
+        <p class="ms-font-m">
+            Paste your time log below. Each line like <code>15m - daily</code> becomes a row
+            with its time spent and description on a new "Time log" sheet. Date lines
+            (e.g. <code>10.11.2026</code>) are allowed but not written.
+        </p>
+
+        <label for="time-log-input" class="ms-font-s app-label">Time log</label>
+        <textarea id="time-log-input" class="app-textarea" rows="12" spellcheck="false"
+            placeholder="- 10.11.2026&#10;    - 15m - daily&#10;    - 1h - developing&#10;    - 30m - FI daily"></textarea>
+
+        <div class="app-actions">
+            <button id="generate-sheet" class="app-button">Generate sheet</button>
+        </div>
+
+        <div id="status" class="app-status" role="status" aria-live="polite"></div>
+        <div id="output" class="app-output"></div>
+    </main>
+</body>
+
+</html>
